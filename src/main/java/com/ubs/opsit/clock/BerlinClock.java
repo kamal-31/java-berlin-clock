@@ -48,7 +48,7 @@ public class BerlinClock implements TimeConverter {
 		final String second = displaySecond();
 		final String hours = displayHours();
 		final String minutes = displayMinutes();
-		return second + "\n" + hours + "\n" + minutes;
+		return second + "\r\n" + hours + "\r\n" + minutes;
 	}
 
 	private String displaySecond() {
@@ -62,7 +62,7 @@ public class BerlinClock implements TimeConverter {
 		for (int i = 0; i < hoursDisplay.size(); i++) {
 			hours += hoursDisplay.get(i).toString();
 			if (i == 3) {
-				hours += "\n";
+				hours += "\r\n";
 			}
 		}
 		return hours;
@@ -74,7 +74,7 @@ public class BerlinClock implements TimeConverter {
 		for (int i = 0; i < minutesDisplay.size(); i++) {
 			hours += minutesDisplay.get(i).toString();
 			if (i == 10) {
-				hours += "\n";
+				hours += "\r\n";
 			}
 		}
 		return hours;

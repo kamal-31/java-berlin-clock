@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static com.ubs.opsit.interviews.support.BehaviouralTestEmbedder.aBehaviouralTestRunner;
 import static org.assertj.core.api.Assertions.assertThat;
+import com.ubs.opsit.clock.BerlinClock;
 
 /**
  * Acceptance test class that uses the JBehave (Gerkin) syntax for writing stories.  You should not need to
@@ -13,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class BerlinClockFixture {
 
-    private TimeConverter berlinClock;
     private String theTime;
+	private final TimeConverter berlinClock = new BerlinClock();
 
     @Test
     public void berlinClockAcceptanceTests() throws Exception {
