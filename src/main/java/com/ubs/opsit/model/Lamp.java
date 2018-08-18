@@ -1,7 +1,7 @@
 package com.ubs.opsit.model;
 
 public abstract class Lamp {
-	protected char state = 'O';
+	public char state = 'O';
 
 	public void off() {
 		state = 'O';

@@ -14,9 +14,7 @@ public abstract class Hand {
 		return parts;
 	}
 
-	public void setParts(final List<Lamp> parts) {
-		this.parts = parts;
-	}
+	public abstract void setParts(final List<Lamp> parts);
 
 	public List<Character> display() {
 		final List<Character> charList = parts.stream().map((final Lamp lamp) -> {

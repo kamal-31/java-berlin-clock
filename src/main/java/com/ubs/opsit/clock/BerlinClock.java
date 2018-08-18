@@ -2,13 +2,19 @@ package com.ubs.opsit.clock;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ubs.opsit.clock.part.Hand;
+import com.ubs.opsit.exception.TimeException;
 import com.ubs.opsit.factory.berlin.BerlinHourFactory;
 import com.ubs.opsit.factory.berlin.BerlinMinuteFactory;
 import com.ubs.opsit.factory.berlin.BerlinSecondFactory;
 import com.ubs.opsit.interviews.TimeConverter;
 
 public class BerlinClock implements TimeConverter {
+	private static final Logger LOG = LoggerFactory.getLogger(BerlinClock.class);
+
 	Hand hours;
 	Hand minutes;
 	Hand seconds;
@@ -28,13 +34,15 @@ public class BerlinClock implements TimeConverter {
 
 	private void changeDisplay(final String aTime) {
 		if (aTime == null || aTime.isEmpty()) {
-			throw new RuntimeException("No time provided");
+			LOG.error("Called with no time");
+			throw new TimeException("No time provided");
 		}
 
 		final String[] splitTime = aTime.split(":");
 
 		if (splitTime.length != 3) {
-			throw new RuntimeException("Incorrect Time Format");
+			LOG.error("Incorrect time format - {}", aTime);
+			throw new TimeException("Incorrect Time Format");
 		}
 
 		hours.update(splitTime[0]);
